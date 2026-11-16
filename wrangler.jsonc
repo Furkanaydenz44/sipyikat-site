@@ -1,0 +1,19 @@
+{
+  "name": "sipyikat-site",
+  "compatibility_date": "2026-11-01",
+  "workers_dev": true,
+  "preview_urls": false,
+  // sipyikat.com and www must stay Proxied (orange cloud) in Cloudflare DNS for these routes to work.
+  "routes": [
+    { "pattern": "sipyikat.com/*", "zone_name": "sipyikat.com" },
+    { "pattern": "www.sipyikat.com/*", "zone_name": "sipyikat.com" }
+  ],
+  "build": {
+    "command": "node build.mjs"
+  },
+  "assets": {
+    "directory": "./public",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

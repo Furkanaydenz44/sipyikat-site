@@ -3,3 +3,8 @@
 # Tanıtım videosunun çalışma dosyaları (kaynak, ses kayıtları, taslaklar) depoya girmez
 tanitim-videosu/
 /sipyikat-tanitim-v2-muzikli.mp4
+
+# Cloudflare yayın çıktıları
+node_modules/
+public/
+.wrangler/

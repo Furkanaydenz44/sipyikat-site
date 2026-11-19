@@ -180,6 +180,9 @@ html:not(.motion) [data-until]:not(.on){display:none}
 .play svg{width:40px;height:40px;margin-left:7px;fill:#fff}
 .video-start{position:absolute;inset:0;border:0;padding:0;background:none;cursor:pointer}
 .video-start:hover .play{transform:scale(1.06)}
+/* Kapak turkuaz olduğu için oynat düğmesi beyaz */
+.video-start .play{background:#fff;box-shadow:0 0 0 14px rgba(255,255,255,.3),0 24px 50px rgba(0,60,68,.3)}
+.video-start .play svg{fill:var(--primary)}
 
 /* Özellik blokları: solda söz, sağda canlı örnek */
 .block{position:relative;overflow:hidden;isolation:isolate;padding:120px 0}
@@ -698,16 +701,9 @@ html:not(.motion) [data-until]:not(.on){display:none}
         <li><div class="step-top"><span class="step-ico"><svg class="ico"><use href="#i-phone"/></svg></span><span class="step-no">ADIM 4</span></div><h3>Anlaş, yıkat, değerlendir</h3><p>Kabul edilince sohbet açılır ve numaran yalnızca o yıkamacıyla paylaşılır. Konumunu gönder, yıkamacı haritadan yol tarifi alsın. İstersen yıldız, yorum ve fotoğrafla değerlendir.</p></li>
       </ol>
       <div class="video-frame" data-reveal>
-        <!-- YER TUTUCU · Tanıtım videosu (16:9 MP4, 1920×1080). Video gelince aşağıdaki <figure> ve .play yerine şunu koyun:
-             <video src="video/sipyikat-tanitim.mp4" poster="img/video-kapak.webp" playsinline preload="none" aria-label="Şıpyıkat tanıtım videosu"></video>
-             <button class="video-start" type="button" aria-label="Videoyu oynat"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z"/></svg></span></button>
-             Oynat düğmesi alttaki betikle kendiliğinden çalışır. -->
-        <figure class="ph" role="img" aria-label="Tanıtım videosu için yer tutucu">
-          <span class="ph-ico"><svg class="ico"><use href="#i-video"/></svg></span>
-          <b>Tanıtım videosu buraya gelecek</b>
-          <small>16:9 · MP4 · 1920×1080 · kapak karesiyle</small>
-        </figure>
-        <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z"/></svg></span>
+        <!-- Tanıtım videosu: 16:9, 1920×1080, H.264 · kapak img/video-kapak.webp · altyazı video/sipyikat-tanitim.vtt -->
+        <video src="video/sipyikat-tanitim.mp4" poster="img/video-kapak.webp" playsinline preload="none" aria-label="Şıpyıkat tanıtım videosu"><track kind="captions" srclang="tr" label="Türkçe" src="video/sipyikat-tanitim.vtt"></video>
+        <button class="video-start" type="button" aria-label="Videoyu oynat"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z"/></svg></span></button>
       </div>
     </div>
   </section>
@@ -912,14 +908,13 @@ html:not(.motion) [data-until]:not(.on){display:none}
       <p class="sub">Cevabını bulamadığın bir şey mi var? Bize yaz: <a href="mailto:hello@sipyikat.com">hello@sipyikat.com</a></p>
     </div>
     <div class="faq-list" data-reveal>
-      <details><summary>Şıpyıkat nedir?</summary><p>Seni yakınındaki mobil araç yıkamacılarıyla buluşturan bir mobil uygulamadır. Yıkamacıların fiyat ve puanlarına bakar, talebini iletir, yıkamacıyla doğrudan anlaşırsın. Yıkama ve ödeme uygulama dışında, senin ve yıkamacının arasındadır.</p></details>
+      <details><summary>Şıpyıkat nedir?</summary><p>Seni yakınındaki mobil araç yıkamacılarıyla buluşturan bir mobil uygulamadır. Yıkamacıların fiyat ve puanlarına bakar, talebini iletir, yıkamacıyla doğrudan anlaşırsın.</p></details>
       <details><summary>Talep göndermek ücretli mi?</summary><p>Hayır. Müşteriler için talep göndermek ücretsiz ve sınırsızdır. İlk mesajın en fazla 200 karakter olabilir.</p></details>
       <details><summary>Yıkamacı talebimi görünce ne oluyor?</summary><p>Yıkamacı mesajını, araç tipini ve ilçeni görür. 20 dakika içinde kabul eder ya da reddeder. Kabul ederse sohbet açılır ve telefon numaran yalnızca bu görüşmede ona görünür.</p></details>
       <details><summary>Yıkamacı reddederse ya da yanıt vermezse ne olur?</summary><p>Kararı Taleplerim ekranında görürsün. 20 dakika içinde yanıt gelmezse talebin süresi dolar ve yıkamacı artık yanıt veremez. Aynı ya da başka bir yıkamacıya yeniden ücretsiz talep gönderebilirsin.</p></details>
       <details><summary>Telefon numaram kimle paylaşılır?</summary><p>Yalnızca talebini kabul eden yıkamacıyla ve yalnızca o görüşmede; numaran kabulden sonra otomatik paylaşılır. Kabul edilmeden yıkamacı yalnızca mesajını, araç tipini ve ilçeni görür. Bu yüzden talep kabul edilene kadar mesajlara telefon numarası yazılamaz.</p></details>
       <details><summary>Konumumu nasıl paylaşırım?</summary><p>Talebin kabul edildikten sonra sohbetteki “Konum gönder” ile tam konumunu gönderirsin. Yıkamacı konumu harita önizlemesiyle görür ve “Konuma git” ile telefonundaki harita uygulamasından yol tarifi alır. Kabulden önce konum gönderilemez; konum yalnızca görüşmenin iki tarafına görünür.</p></details>
       <details><summary>Ödemeyi nasıl yapıyorum?</summary><p>Ödeme uygulama içinde yapılmaz; yıkamacıyla aranızda, yıkama sırasında ya da sonrasında anlaşırsınız. Uygulama yalnızca eşleştirme ve sohbet içindir.</p></details>
-      <details><summary>Sohbet ne kadar saklanır?</summary><p>Sohbet, mesajlar ve konumlar dahil, ilk mesajından 24 saat sonra kalıcı olarak silinir; bunun istisnası yoktur. Değerlendirmeler ve değerlendirme fotoğrafları sohbetten bağımsızdır, sohbet silinince de yıkamacının profilinde kalır.</p></details>
       <details><summary>Yıkamacıyı nasıl değerlendiririm?</summary><p>Talebin kabul edildikten sonra sohbetteki “Değerlendir” düğmesiyle, sohbet silinene kadar (ilk mesajdan 24 saat) değerlendirme yapabilirsin. 1–5 yıldız verir; istersen bir hazır yorum (“Zamanında geldi”, “Özenli çalıştı”, “Fiyatı makul”, “İletişimi hızlıydı”), yazılı yorum ve en fazla 3 fotoğraf eklersin. Değerlendirme isteğe bağlıdır; Hesabım › Değerlendirmelerim’den sonradan düzenleyebilir ya da silebilirsin.</p></details>
       <details><summary>“Onaylı yıkamacı” ve “Öne çıkarılan” ne demek?</summary><p>50’den fazla değerlendirmesi ve 4 ve üzeri yıldız puanı olan yıkamacılar “Onaylı yıkamacı” rozeti alır; henüz değerlendirmesi olmayanlarda puan “–” olarak görünür. “Öne çıkarılan” bölümündeki yıkamacılar 24 saat boyunca listenin üstünde görünür; süre bitince kendiliğinden sona erer. Sıralama her durumda yıldız puanına göredir.</p></details>
       <details id="katil"><summary>Yıkamacı olarak nasıl katılırım?</summary><p>Uygulamadan bireysel ya da şirket hesabı olarak kayıt olursun. Profil fotoğrafını eklersin, araç tipine göre hizmet fiyatlarını (dış yıkama, iç ve dış yıkama, detaylı iç temizlik, koltuk yıkama, pasta ve cila) girer ve İstanbul ilçelerinden en fazla 3 hizmet bölgesi seçersin. Profiline bir kapak fotoğrafı ve en fazla 12 iş fotoğrafı da ekleyebilirsin. Sorularını hello@sipyikat.com adresine yazabilirsin.</p></details>

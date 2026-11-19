@@ -1,1 +1,5 @@
 .DS_Store
+
+# Tanıtım videosunun çalışma dosyaları (kaynak, ses kayıtları, taslaklar) depoya girmez
+tanitim-videosu/
+/sipyikat-tanitim-v2-muzikli.mp4

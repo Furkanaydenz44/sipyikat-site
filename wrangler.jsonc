@@ -1,0 +1,23 @@
+{
+  "name": "sipyikat-site",
+  "compatibility_date": "2026-11-01",
+  "workers_dev": true,
+  "preview_urls": false,
+  // sipyikat.com and www must stay Proxied (orange cloud) in Cloudflare DNS for these routes to work.
+  "routes": [
+    { "pattern": "sipyikat.com/*", "zone_name": "sipyikat.com" },
+    { "pattern": "www.sipyikat.com/*", "zone_name": "sipyikat.com" }
+  ],
+  "build": {
+    "command": "node build.mjs"
+  },
+  // Worker code only runs for /video/* (Range support for Safari/iOS); everything else is served directly as static assets.
+  "main": "src/worker.js",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/video/*"],
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

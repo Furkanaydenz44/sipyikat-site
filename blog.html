@@ -232,6 +232,16 @@ h1:focus{outline:none}
   .store svg{width:24px;height:24px}
   .store b{font-size:1.02rem}
 }
+
+/* Mağaza düğmeleri: eşit genişlik, ortalı logo ve yazı */
+.store{justify-content:center;width:224px;min-width:0;padding:0 22px;gap:12px}
+.store svg.ap{width:26px;height:26px}
+.store svg.gp{width:22px;height:22px}
+.store b{font-size:1.12rem}
+@media (max-width:640px){.store{flex:1 1 0;width:auto;padding:0 12px;gap:10px}.store svg.ap{width:24px;height:24px}.store svg.gp{width:20px;height:20px}.store b{font-size:1.02rem}}
+
+/* Altbilgideki e-posta adreslerinin etiketleri */
+.foot-grid a small{display:block;margin-bottom:1px;color:var(--muted);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 </style>
 </head>
 <body>
@@ -280,10 +290,10 @@ h1:focus{outline:none}
   <h2>Uygulamayı indir,<br>Anlaş, Şıpyıkat.</h2>
   <!-- Mağaza bağlantıları gelince <span class="store"> yerine <a class="store" href="..."> kullanın -->
   <div class="stores">
-    <span class="store"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8c-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.2.9-1.3 1.3-2.5 1.3-2.6 0 0-2.5-1-2.5-3.9zM14.1 5.8c.6-.8 1.1-1.9.9-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1.1.1 2.2-.5 2.8-1.3z"/></svg><span><small>Yakında</small><b>App Store</b></span></span>
-    <span class="store"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.5v19a1 1 0 0 0 1.5.9l16-9.5a1 1 0 0 0 0-1.8L5.5 1.6A1 1 0 0 0 4 2.5z"/></svg><span><small>Yakında</small><b>Google Play</b></span></span>
+    <span class="store"><svg class="ap" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8c-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.2.9-1.3 1.3-2.5 1.3-2.6 0 0-2.5-1-2.5-3.9zM14.1 5.8c.6-.8 1.1-1.9.9-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1.1.1 2.2-.5 2.8-1.3z"/></svg><b>App Store</b></span>
+    <span class="store"><svg class="gp" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.5v19a1 1 0 0 0 1.5.9l16-9.5a1 1 0 0 0 0-1.8L5.5 1.6A1 1 0 0 0 4 2.5z"/></svg><b>Google Play</b></span>
   </div>
-  <p class="closing-note">Şıpyıkat, şıp diye yıkat. Yakında App Store ve Google Play’de.</p>
+  <p class="closing-note">Şıpyıkat, şıp diye yıkat. App Store ve Google Play’de.</p>
 </section>
 
 <footer class="foot">
@@ -291,7 +301,7 @@ h1:focus{outline:none}
     <div class="foot-grid">
       <div><a class="brand" href="sipyikat-web.html" aria-label="Şıpyıkat ana sayfa"><svg class="logo" viewBox="0 0 1026.4259597806215 221" aria-hidden="true"><use href="#logo"/></svg></a><p>Aracını yıkatmak için araştırma yapmak eskide kaldı. Uygulamayı indir, Anlaş, Şıpyıkat.</p></div>
       <div><h4>Sayfalar</h4><a href="sipyikat-web.html#nasil">Nasıl çalışır</a><a href="sipyikat-web.html#hizmetler">Hizmetler</a><a href="sipyikat-web.html#yikamaci">Mobil yıkamacılar için</a><a href="sipyikat-web.html#hakkimizda">Hakkımızda</a><a href="sipyikat-web.html#sss">SSS</a><a href="blog.html">Blog</a></div>
-      <div><h4>İletişim ve yasal</h4><a href="mailto:hello@sipyikat.com">hello@sipyikat.com</a><a href="#">Gizlilik Politikası</a><a href="#">KVKK Aydınlatma Metni</a><a href="#">Kullanım Koşulları</a></div>
+      <div><h4>İletişim</h4><a href="mailto:destek@sipyikat.com"><small>Destek</small>destek@sipyikat.com</a><a href="mailto:iletisim@sipyikat.com"><small>Genel iletişim</small>iletisim@sipyikat.com</a><a href="mailto:business@sipyikat.com"><small>İş birlikleri</small>business@sipyikat.com</a></div><div><h4>Yasal</h4><a href="#">Gizlilik Politikası</a><a href="#">KVKK Aydınlatma Metni</a><a href="#">Kullanım Koşulları</a></div>
     </div>
     <p class="legal">© 2026 Şıpyıkat. Tüm hakları saklıdır.</p>
   </div>

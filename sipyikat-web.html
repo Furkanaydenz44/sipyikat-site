@@ -180,9 +180,10 @@ html:not(.motion) [data-until]:not(.on){display:none}
 .play svg{width:40px;height:40px;margin-left:7px;fill:#fff}
 .video-start{position:absolute;inset:0;border:0;padding:0;background:none;cursor:pointer}
 .video-start:hover .play{transform:scale(1.06)}
-/* Kapak turkuaz olduğu için oynat düğmesi beyaz */
-.video-start .play{background:#fff;box-shadow:0 0 0 14px rgba(255,255,255,.3),0 24px 50px rgba(0,60,68,.3)}
-.video-start .play svg{fill:var(--primary)}
+/* Oynat düğmesi: beyaz daire, ağırlık merkezi tam ortada olan yuvarlak köşeli üçgen */
+.video-start .play{width:108px;height:108px;margin:-54px 0 0 -54px;background:#fff;box-shadow:0 0 0 10px rgba(255,255,255,.34),0 20px 44px rgba(0,50,58,.35)}
+.video-start .play svg{width:58px;height:58px;margin:0;fill:var(--primary-ink)}
+@media (max-width:640px){.video-start .play{width:80px;height:80px;margin:-40px 0 0 -40px;box-shadow:0 0 0 8px rgba(255,255,255,.34),0 14px 30px rgba(0,50,58,.32)}.video-start .play svg{width:42px;height:42px}}
 
 /* Özellik blokları: solda söz, sağda canlı örnek */
 .block{position:relative;overflow:hidden;isolation:isolate;padding:120px 0}
@@ -558,6 +559,27 @@ html:not(.motion) [data-until]:not(.on){display:none}
   .closing-logo .logo{height:38px}
   .maker{padding:20px}
 }
+
+/* Video çerçevesi ekrana sığsın: yüksekliği, üst menü ve kenar boşlukları düşülmüş ekran yüksekliğini aşmaz */
+.video-frame{width:min(100%,calc((100vh - 168px) * 16 / 9));margin-left:auto;margin-right:auto}
+@supports (height:100svh){.video-frame{width:min(100%,calc((100svh - 168px) * 16 / 9))}}
+/* SSS: daha fazla göster */
+.faq-list.collapsed details.more{display:none}
+.faq-list details p a{color:var(--primary-ink);font-weight:700}
+.faq-more{display:inline-flex;align-items:center;gap:10px;margin-top:26px;height:52px;padding:0 24px;border:1.5px solid var(--line);border-radius:26px;background:#fff;color:var(--ink);font:inherit;font-weight:700;cursor:pointer;transition:background .2s,border-color .2s}
+.faq-more:hover{background:var(--primary-light);border-color:#CCF2F7}
+.faq-more svg{width:20px;height:20px;flex:none;transition:transform .3s}
+.faq-more[aria-expanded="true"] svg{transform:rotate(180deg)}
+
+/* Mağaza düğmeleri: eşit genişlik, ortalı logo ve yazı */
+.store{justify-content:center;width:224px;min-width:0;padding:0 22px;gap:12px}
+.store svg.ap{width:26px;height:26px}
+.store svg.gp{width:22px;height:22px}
+.store b{font-size:1.12rem}
+@media (max-width:640px){.store{flex:1 1 0;width:auto;padding:0 12px;gap:10px}.store svg.ap{width:24px;height:24px}.store svg.gp{width:20px;height:20px}.store b{font-size:1.02rem}}
+
+/* Altbilgideki e-posta adreslerinin etiketleri */
+.foot-grid a small{display:block;margin-bottom:1px;color:var(--muted);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 </style>
 </head>
 <body>
@@ -640,12 +662,12 @@ html:not(.motion) [data-until]:not(.on){display:none}
         <div class="hero-copy">
           <span class="kicker">Mobil araç yıkama</span>
           <h1>Aracını yıkatmak için araştırma yapmak eskide kaldı.</h1>
-          <p class="lede">Yakınındaki mobil yıkamacıların fiyat ve puanlarını gör, talebini ücretsiz ilet. Yıkamacının yanıt süresi 20 dakika; yıkama ve ödeme seninle onun arasında.</p>
+          <p class="lede">Yakınındaki mobil yıkamacıların fiyat ve puanlarını gör, talebini ücretsiz gönder. Yıkamacı 20 dakika içinde yanıt verir. Sonrasında anlaş, şıp diye yıkat! Komisyon yok, ödeme aranızda.</p>
           <p class="slogan">Uygulamayı indir, Anlaş, Şıpyıkat.</p>
           <!-- Mağaza bağlantıları gelince <span class="store"> yerine <a class="store" href="..."> kullanın -->
           <div class="stores">
-            <span class="store"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8c-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.2.9-1.3 1.3-2.5 1.3-2.6 0 0-2.5-1-2.5-3.9zM14.1 5.8c.6-.8 1.1-1.9.9-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1.1.1 2.2-.5 2.8-1.3z"/></svg><span><small>Yakında</small><b>App Store</b></span></span>
-            <span class="store"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.5v19a1 1 0 0 0 1.5.9l16-9.5a1 1 0 0 0 0-1.8L5.5 1.6A1 1 0 0 0 4 2.5z"/></svg><span><small>Yakında</small><b>Google Play</b></span></span>
+            <span class="store"><svg class="ap" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8c-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.2.9-1.3 1.3-2.5 1.3-2.6 0 0-2.5-1-2.5-3.9zM14.1 5.8c.6-.8 1.1-1.9.9-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1.1.1 2.2-.5 2.8-1.3z"/></svg><b>App Store</b></span>
+            <span class="store"><svg class="gp" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.5v19a1 1 0 0 0 1.5.9l16-9.5a1 1 0 0 0 0-1.8L5.5 1.6A1 1 0 0 0 4 2.5z"/></svg><b>Google Play</b></span>
           </div>
         </div>
         <div class="devices">
@@ -695,15 +717,15 @@ html:not(.motion) [data-until]:not(.on){display:none}
         <p class="sub">Araştırma, soruşturma yok. Tek uygulamada bul, yaz, anlaş.</p>
       </div>
       <ol class="steps" data-reveal>
-        <li><div class="step-top"><span class="step-ico"><svg class="ico"><use href="#i-search"/></svg></span><span class="step-no">ADIM 1</span></div><h3>Yakınındakileri gör</h3><p>Bölgene hizmet veren ve şu an çalışan yıkamacıları yıldız puanına göre sıralı gör; fiyata ve puana göre filtrele. “Onaylı yıkamacı” rozetine, fiyatlara, fotoğraflara ve yorumlara bak.</p></li>
-        <li><div class="step-top"><span class="step-ico"><svg class="ico"><use href="#i-send"/></svg></span><span class="step-no">ADIM 2</span></div><h3>Talebini ücretsiz ilet</h3><p>Aracını ve istediğin hizmeti seç; yıkamacıya uygun olduğun zamanı ve aracının nerede olduğunu kısaca yaz. Dilediğin kadar yıkamacıya yazabilirsin, talep göndermek ücretsiz ve sınırsız.</p></li>
-        <li><div class="step-top"><span class="step-ico"><svg class="ico"><use href="#i-clock"/></svg></span><span class="step-no">ADIM 3</span></div><h3>20 dakikada yanıt</h3><p>Yıkamacı talebini görür; 20 dakika içinde kabul eder ya da reddeder. Yanıt gelmezse talebin süresi dolar; aynı ya da başka bir yıkamacıya yeniden ücretsiz yazabilirsin.</p></li>
-        <li><div class="step-top"><span class="step-ico"><svg class="ico"><use href="#i-phone"/></svg></span><span class="step-no">ADIM 4</span></div><h3>Anlaş, yıkat, değerlendir</h3><p>Kabul edilince sohbet açılır ve numaran yalnızca o yıkamacıyla paylaşılır. Konumunu gönder, yıkamacı haritadan yol tarifi alsın. İstersen yıldız, yorum ve fotoğrafla değerlendir.</p></li>
+        <li><div class="step-top"><span class="step-ico"><svg class="ico"><use href="#i-search"/></svg></span><span class="step-no">ADIM 1</span></div><h3>Yakınındakileri gör</h3><p>Bölgene hizmet veren yıkamacıları yıldız puanına göre sırala; fiyata ve puana göre filtrele. Değerlendirmeleri incele.</p></li>
+        <li><div class="step-top"><span class="step-ico"><svg class="ico"><use href="#i-send"/></svg></span><span class="step-no">ADIM 2</span></div><h3>Talebini ücretsiz ilet</h3><p>Aracını ve hizmeti seç; yıkamacıya uygun olduğun zamanı ve aracının nerede olduğunu yaz. Dilediğin kadar yıkamacıya ücretsiz talep gönder.</p></li>
+        <li><div class="step-top"><span class="step-ico"><svg class="ico"><use href="#i-clock"/></svg></span><span class="step-no">ADIM 3</span></div><h3>20 dakikada yanıt</h3><p>Yıkamacı 20 dakika içinde kabul eder ya da reddeder. Yanıt gelmezse aynı ya da başka bir yıkamacıya yeniden ücretsiz yazabilirsin.</p></li>
+        <li><div class="step-top"><span class="step-ico"><svg class="ico"><use href="#i-phone"/></svg></span><span class="step-no">ADIM 4</span></div><h3>Anlaş, yıkat, değerlendir</h3><p>Talebin kabul edilince yıkamacı ile sohbet açılır ve numaran yalnızca onunla paylaşılır. Konumunu gönder, yıkamacı gelsin. İş bitince değerlendirebilirsin.</p></li>
       </ol>
       <div class="video-frame" data-reveal>
         <!-- Tanıtım videosu: 16:9, 1920×1080, H.264 · kapak img/video-kapak.webp · altyazı video/sipyikat-tanitim.vtt -->
         <video src="video/sipyikat-tanitim.mp4" poster="img/video-kapak.webp" playsinline preload="none" aria-label="Şıpyıkat tanıtım videosu"><track kind="captions" srclang="tr" label="Türkçe" src="video/sipyikat-tanitim.vtt"></video>
-        <button class="video-start" type="button" aria-label="Videoyu oynat"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z"/></svg></span></button>
+        <button class="video-start" type="button" aria-label="Videoyu oynat"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.9l10.8-6.8c.6-.4.6-1.3 0-1.7L9.6 4.3C8.9 3.9 8 4.4 8 5.2z"/></svg></span></button>
       </div>
     </div>
   </section>
@@ -866,7 +888,7 @@ html:not(.motion) [data-until]:not(.on){display:none}
           <li><span class="tile-ico"><svg class="ico"><use href="#i-star"/></svg></span><div><b>Puanla güven kazan</b><p>Müşterilerin seni yıldız, yorum ve fotoğrafla değerlendirir. 50’den fazla değerlendirme ve 4 ve üzeri yıldızla “Onaylı yıkamacı” rozeti kazan, listede güven ver.</p></div></li>
           <li class="feat"><span class="tile-ico"><svg class="ico"><use href="#i-bolt"/></svg></span><div><b>24 saat öne çık</b><p>₺2.000 ve üzeri bakiye yükle; 24 saat boyunca tüm hizmet bölgelerinde listenin üstünde görün.</p></div></li>
         </ul>
-        <div class="join"><a class="pill light" href="#katil">Nasıl katılırım?</a><a href="mailto:hello@sipyikat.com">hello@sipyikat.com</a></div>
+        <div class="join"><a class="pill light" href="#katil">Nasıl katılırım?</a><a href="mailto:business@sipyikat.com">business@sipyikat.com</a></div>
       </div>
       <div class="washer-stage" data-reveal>
         <span class="halo" aria-hidden="true"></span>
@@ -905,7 +927,7 @@ html:not(.motion) [data-until]:not(.on){display:none}
   <section class="faq wrap" id="sss">
     <div class="faq-head" data-reveal>
       <h2 class="title">Sık sorulan sorular</h2>
-      <p class="sub">Cevabını bulamadığın bir şey mi var? Bize yaz: <a href="mailto:hello@sipyikat.com">hello@sipyikat.com</a></p>
+      <p class="sub">Cevabını bulamadığın bir şey mi var? Bize yaz: <a href="mailto:business@sipyikat.com">business@sipyikat.com</a></p>
     </div>
     <div class="faq-list" data-reveal>
       <details><summary>Şıpyıkat nedir?</summary><p>Seni yakınındaki mobil araç yıkamacılarıyla buluşturan bir mobil uygulamadır. Yıkamacıların fiyat ve puanlarına bakar, talebini iletir, yıkamacıyla doğrudan anlaşırsın.</p></details>
@@ -917,10 +939,10 @@ html:not(.motion) [data-until]:not(.on){display:none}
       <details><summary>Ödemeyi nasıl yapıyorum?</summary><p>Ödeme uygulama içinde yapılmaz; yıkamacıyla aranızda, yıkama sırasında ya da sonrasında anlaşırsınız. Uygulama yalnızca eşleştirme ve sohbet içindir.</p></details>
       <details><summary>Yıkamacıyı nasıl değerlendiririm?</summary><p>Talebin kabul edildikten sonra sohbetteki “Değerlendir” düğmesiyle, sohbet silinene kadar (ilk mesajdan 24 saat) değerlendirme yapabilirsin. 1–5 yıldız verir; istersen bir hazır yorum (“Zamanında geldi”, “Özenli çalıştı”, “Fiyatı makul”, “İletişimi hızlıydı”), yazılı yorum ve en fazla 3 fotoğraf eklersin. Değerlendirme isteğe bağlıdır; Hesabım › Değerlendirmelerim’den sonradan düzenleyebilir ya da silebilirsin.</p></details>
       <details><summary>“Onaylı yıkamacı” ve “Öne çıkarılan” ne demek?</summary><p>50’den fazla değerlendirmesi ve 4 ve üzeri yıldız puanı olan yıkamacılar “Onaylı yıkamacı” rozeti alır; henüz değerlendirmesi olmayanlarda puan “–” olarak görünür. “Öne çıkarılan” bölümündeki yıkamacılar 24 saat boyunca listenin üstünde görünür; süre bitince kendiliğinden sona erer. Sıralama her durumda yıldız puanına göredir.</p></details>
-      <details id="katil"><summary>Yıkamacı olarak nasıl katılırım?</summary><p>Uygulamadan bireysel ya da şirket hesabı olarak kayıt olursun. Profil fotoğrafını eklersin, araç tipine göre hizmet fiyatlarını (dış yıkama, iç ve dış yıkama, detaylı iç temizlik, koltuk yıkama, pasta ve cila) girer ve İstanbul ilçelerinden en fazla 3 hizmet bölgesi seçersin. Profiline bir kapak fotoğrafı ve en fazla 12 iş fotoğrafı da ekleyebilirsin. Sorularını hello@sipyikat.com adresine yazabilirsin.</p></details>
+      <details id="katil"><summary>Yıkamacı olarak nasıl katılırım?</summary><p>Uygulamadan bireysel ya da şirket hesabı olarak kayıt olursun. Profil fotoğrafını eklersin, araç tipine göre hizmet fiyatlarını (dış yıkama, iç ve dış yıkama, detaylı iç temizlik, koltuk yıkama, pasta ve cila) girer ve İstanbul ilçelerinden en fazla 3 hizmet bölgesi seçersin. Profiline bir kapak fotoğrafı ve en fazla 12 iş fotoğrafı da ekleyebilirsin. Sorularını business@sipyikat.com adresine yazabilirsin.</p></details>
       <details><summary>Kişisel verilerim nasıl korunuyor?</summary><p>Verilerin Gizlilik Politikası ve KVKK Aydınlatma Metni’ne uygun işlenir. Hesabını dondurduğunda profilin gizlenir, verilerin saklanır ve tek dokunuşla geri açabilirsin. Hesap silme talebinde bir bekleme süresi uygulanır; bu sürede giriş yaparsan silme iptal olur.</p></details>
       <details><summary>Hangi bölgelerde hizmet var?</summary><p>Şıpyıkat İstanbul’un tüm ilçelerinde başlıyor. Her yıkamacı en fazla 3 ilçede hizmet verir; listede yalnızca senin bölgene hizmet veren ve şu an çalışan yıkamacıları görürsün.</p></details>
-      <details><summary>Bir sorun yaşarsam ne yaparım?</summary><p>Sohbetin sağ üstündeki menüden “Şikayet et” ile bildirebilir ya da karşı tarafı engelleyebilirsin; şikayet ve engelleme hem müşteriler hem yıkamacılar için vardır. Bildirimin destek ekibimize iletilir; uygulamadaki Yardım ve destek bölümünden de bize ulaşabilirsin.</p></details>
+      <details><summary>Bir sorun yaşarsam ne yaparım?</summary><p>Sohbetin sağ üstündeki menüden “Şikayet et” ile bildirebilir ya da karşı tarafı engelleyebilirsin; şikayet ve engelleme hem müşteriler hem yıkamacılar için vardır. Bildirimin destek ekibimize iletilir; uygulamadaki Yardım ve destek bölümünden ya da <a href="mailto:destek@sipyikat.com">destek@sipyikat.com</a> adresinden de bize ulaşabilirsin.</p></details>
     </div>
   </section>
 
@@ -936,14 +958,14 @@ html:not(.motion) [data-until]:not(.on){display:none}
     <div class="closing-logo" data-reveal><svg class="logo" viewBox="0 0 1026.4259597806215 221" role="img" aria-label="Şıpyıkat"><use href="#logo"/></svg></div>
     <h2 data-reveal>Uygulamayı indir,<br>Anlaş, Şıpyıkat.</h2>
     <div class="maker" data-reveal>
-      <p>İstanbul’da başlıyoruz. Amacımız aracını yıkatmayı birkaç dokunuş kadar kolay hâle getirmek. Önerin, sorun ya da yıkamacı olarak katılmak için doğrudan bize yaz: <a href="mailto:hello@sipyikat.com">hello@sipyikat.com</a></p>
+      <p>İstanbul’da başlıyoruz. Amacımız aracını yıkatmayı birkaç dokunuş kadar kolay hâle getirmek. Önerin, sorun ya da yıkamacı olarak katılmak için doğrudan bize yaz: <a href="mailto:business@sipyikat.com">business@sipyikat.com</a></p>
       <p class="sign">Şıpyıkat ekibi</p>
     </div>
     <div class="stores" data-reveal>
-      <span class="store"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8c-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.2.9-1.3 1.3-2.5 1.3-2.6 0 0-2.5-1-2.5-3.9zM14.1 5.8c.6-.8 1.1-1.9.9-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1.1.1 2.2-.5 2.8-1.3z"/></svg><span><small>Yakında</small><b>App Store</b></span></span>
-      <span class="store"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.5v19a1 1 0 0 0 1.5.9l16-9.5a1 1 0 0 0 0-1.8L5.5 1.6A1 1 0 0 0 4 2.5z"/></svg><span><small>Yakında</small><b>Google Play</b></span></span>
+      <span class="store"><svg class="ap" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8c-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.2.9-1.3 1.3-2.5 1.3-2.6 0 0-2.5-1-2.5-3.9zM14.1 5.8c.6-.8 1.1-1.9.9-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1.1.1 2.2-.5 2.8-1.3z"/></svg><b>App Store</b></span>
+      <span class="store"><svg class="gp" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.5v19a1 1 0 0 0 1.5.9l16-9.5a1 1 0 0 0 0-1.8L5.5 1.6A1 1 0 0 0 4 2.5z"/></svg><b>Google Play</b></span>
     </div>
-    <p class="closing-note" data-reveal>Şıpyıkat, şıp diye yıkat. Yakında App Store ve Google Play’de.</p>
+    <p class="closing-note" data-reveal>Şıpyıkat, şıp diye yıkat. App Store ve Google Play’de.</p>
   </section>
 </main>
 
@@ -952,7 +974,7 @@ html:not(.motion) [data-until]:not(.on){display:none}
     <div class="foot-grid">
       <div><a class="brand" href="#" aria-label="Şıpyıkat ana sayfa"><svg class="logo" viewBox="0 0 1026.4259597806215 221" aria-hidden="true"><use href="#logo"/></svg></a><p>Aracını yıkatmak için araştırma yapmak eskide kaldı. Uygulamayı indir, Anlaş, Şıpyıkat.</p></div>
       <div><h4>Sayfalar</h4><a href="#nasil">Nasıl çalışır</a><a href="#hizmetler">Hizmetler</a><a href="#yikamaci">Mobil yıkamacılar için</a><a href="#hakkimizda">Hakkımızda</a><a href="#sss">SSS</a><a href="blog.html">Blog</a></div>
-      <div><h4>İletişim ve yasal</h4><a href="mailto:hello@sipyikat.com">hello@sipyikat.com</a><a href="#">Gizlilik Politikası</a><a href="#">KVKK Aydınlatma Metni</a><a href="#">Kullanım Koşulları</a></div>
+      <div><h4>İletişim</h4><a href="mailto:destek@sipyikat.com"><small>Destek</small>destek@sipyikat.com</a><a href="mailto:iletisim@sipyikat.com"><small>Genel iletişim</small>iletisim@sipyikat.com</a><a href="mailto:business@sipyikat.com"><small>İş birlikleri</small>business@sipyikat.com</a></div><div><h4>Yasal</h4><a href="#">Gizlilik Politikası</a><a href="#">KVKK Aydınlatma Metni</a><a href="#">Kullanım Koşulları</a></div>
     </div>
     <p class="legal">© 2026 Şıpyıkat. Tüm hakları saklıdır. <span class="credit">Telefon çizimi: <a href="https://commons.wikimedia.org/wiki/File:IPhone_17_Vector.svg" rel="noopener">Rafael Fernandez</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.tr" rel="noopener">CC BY-SA 4.0</a>; ekran görüntüleri eklendi.</span></p>
   </div>
@@ -1087,8 +1109,23 @@ html:not(.motion) [data-until]:not(.on){display:none}
     b.addEventListener('click',function(){b.hidden=true;v.controls=true;v.play()});
   });
 
-  /* Bağlantı bir soruya gidiyorsa soruyu aç */
-  var openHash=function(){var id=decodeURIComponent(location.hash.slice(1)), t=id&&document.getElementById(id);if(t&&t.tagName==='DETAILS')t.open=true};
+  /* SSS: ilk 6 soru görünür, gerisi düğmeyle açılır */
+  var faqList=document.querySelector('.faq-list'), faqBtn=null, setFaq=function(){};
+  if(faqList){
+    var faqItems=faqList.querySelectorAll('details'), FAQ_N=6;
+    if(faqItems.length>FAQ_N){
+      for(var i=FAQ_N;i<faqItems.length;i++)faqItems[i].classList.add('more');
+      faqBtn=document.createElement('button');faqBtn.type='button';faqBtn.className='faq-more';faqBtn.setAttribute('aria-controls','faq-liste');
+      faqList.id='faq-liste';faqList.appendChild(faqBtn);
+      setFaq=function(open){faqList.classList.toggle('collapsed',!open);faqBtn.setAttribute('aria-expanded',open?'true':'false');
+        faqBtn.innerHTML=(open?'Daha az göster':'Tüm soruları göster ('+(faqItems.length-FAQ_N)+' soru daha)')+'<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>'};
+      setFaq(false);
+      faqBtn.addEventListener('click',function(){var open=faqList.classList.contains('collapsed');setFaq(open);if(!open)faqList.scrollIntoView({block:'start'})});
+    }
+  }
+
+  /* Bağlantı bir soruya gidiyorsa soruyu aç (gizli sorulardaysa önce listeyi aç) */
+  var openHash=function(){var id=decodeURIComponent(location.hash.slice(1)), t=id&&document.getElementById(id);if(t&&t.tagName==='DETAILS'){if(t.classList.contains('more')&&faqList&&faqList.classList.contains('collapsed')){setFaq(true);setTimeout(function(){t.scrollIntoView({block:'center'})},0)}t.open=true}};
   addEventListener('hashchange',openHash);openHash();
 
   addEventListener('load',function(){requestAnimationFrame(function(){html.classList.add('smooth')})});
